@@ -14,4 +14,6 @@ Uncompress the files and save them under a directory $DATA, which later will be 
 ```
 $ main_charades.lua -dir_data $DATA
 ```
-Preprocessing 
+### Preprocessing
+Open ```./prep/trainData_gen.lua```. In line 18, change **dir_data, **dir_anno**, **dir_dest** to your own directories. 
+Repeat the same with file ```./prep/testData_gen.lua```. 
