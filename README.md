@@ -21,6 +21,12 @@ Repeat the same with file ```./prep/testData_gen.lua```.
 ### Training
 #### models:
 There are four versions of our extended LSTM model: ```LSTM_extended```, ```LSTM_binaryJ```, ```LSTM_cumulative```, and ```LSTM_topK```. 
-
+* ```LSTM_extended```: the baseline version
+* ```LSTM_binaryJ```: j_gates are binary (0/1)
+* ```LSTM_cumulative```: a small buffer to take past information into account
+* ```LSTM_topK```: pick K frames from every video that correspond to the top K j_gates.
+#### examples:
+Here's an example of training with ```LSTM_topK``` model. 
 ```
 $ main_charades.lua -model LSTM_topK -
+```
