@@ -15,12 +15,12 @@ Uncompress the files and save them under a directory $DATA, which later will be 
 $ main_charades.lua -dir_data $DATA
 ```
 ### Preprocessing
-Open ```./prep/trainData_gen.lua```. In line 18, change **dir_data**, **dir_anno**, **dir_dest** to your own directories. 
+Open ```./prep/trainData_gen.lua```. In line 18, change ```dir_data```, ```dir_anno```, ```dir_dest``` to your own directories. 
 Repeat the same with file ```./prep/testData_gen.lua```. 
 
 ### Training
 #### models:
-There are four versions of our extended LSTM model: **LSTM_extended**, **LSTM_binaryJ**, **LSTM_cumulative**, and **LSTM_topK**. 
+There are four versions of our extended LSTM model: ```LSTM_extended```, ```LSTM_binaryJ```, ```LSTM_cumulative```, and ```LSTM_topK```. 
 
 ```
 $ main_charades.lua -model LSTM_topK -
