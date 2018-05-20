@@ -10,20 +10,9 @@ function M.parse(arg)
 	cmd:option('-task',		'localization', 'task (classification|localization)')
 	cmd:option('-nClasses',		157, 'number of classes (including background)')
 	cmd:option('-dir_feats',	'/media/storage/Work/data/Charades_features/', 'Path to features')
-	--cmd:option('-chunk_path',	'chunk_rgb50f_training/', 'the subfolder under dir_feats that saves features in chunks')
-	--cmd:option('-rgbt7',		'rgbfeats_157classes_50frames.t7','t7 file of all features')
-	--cmd:option('-rgbt7Train',	'rgbfeats_train_50frames_8FPS.t7', 't7 file containing rgb features for training')
-	--cmd:option('-rgbt7Test',	'rgbfeats_test_50frames_8FPS.t7', 't7 file containing rgb features for testing')
-	--cmd:option('-rgbfeats',	'Charades_v1_features_rgb/', 'Path to rgb features')
-	--cmd:option('-flowfeats',	'Charades_v1_features_flow/', 'Path to flow features')
-   	--cmd:option('-dir_annos',	'/media/storage/Work/data/Charades_annotations', 'Path to annotations')
-	--cmd:option('-trainfile',  	'./Charades_v1_train.csv', 'Path to training annotations')
-   	--cmd:option('-testfile',   	'./Charades_v1_test.csv', 'Path to testing annotations')
-	--cmd:option('-num_segment', 	1, 'number of segments for each video')
 	cmd:option('-input_size',	4096, 'dimension of input features')
 	cmd:option('-rho', 		50, 'number of frames for each video')
-	cmd:option('-batch_size',	64,'number of sequences to train on in parallel') -- number of examples per batch
-	--cmd:option('-chuck_size',	1000, 'number of videos to load at once')
+	cmd:option('-batch_size',	64,'number of sequences to train on in parallel') -- number of videos per batch
 	-- model params
 	cmd:option('-model',		'LSTM_test','LSTM model (LSTM|LSTM_gateOut|LSTM_gateOut_offset|LSTM_gateOut2|LSTM_extended)')
 	cmd:option('-Kframes',		'10','top K frames to keep in the summary')
@@ -40,7 +29,6 @@ function M.parse(arg)
 	cmd:option('-decay_rate',	0.95,'decay rate for rmsprop')
 	cmd:option('-decay_every',	100, 'number of iterations decay rate drops')
 	cmd:option('-dropout',		0,'dropout for regularization, used after each RNN hidden layer. 0 = no dropout')
-	--cmd:option('-seq_length',	64,'number of timesteps to unroll for')
 	cmd:option('-max_epochs',	300,'number of full passes through the training data')
 	cmd:option('-grad_clip',	5,'clip gradients at this value')
 		    -- test_frac will be computed as (1 - train_frac - val_frac)
@@ -57,7 +45,6 @@ function M.parse(arg)
 	-- GPU/CPU
 	cmd:option('-gpuid',		0,'which gpu to use. -1 = use CPU')
 	cmd:option('-opencl',		0,'use OpenCL (instead of CUDA)')
-
 	--test options
 	cmd:option('-test_only',	false,'run the test part only, using model from option resume_from (true|false)')
 	cmd:option('-resume_from',	'checkpoint/lstm_baseline.t7','model checkpoint to use for testing')
@@ -76,12 +63,6 @@ function M.parse(arg)
 	opt.save = 'results/testlog_' .. opt.pastalogName
 	paths.mkdir(opt.save)
 	paths.mkdir(opt.checkpoint_dir)
-	--opt.save_gates = paths.concat(opt.save_dir..'/results_max_lossv3_lambda'..opt.l1_weight..'_offset'..-1*opt.offset..'/')
-	--print(opt.save_gates)
-	--paths.mkdir(opt.save_gates)
-
-	--opt.spatFeatDir = opt.dir_feats .. opt.rgbt7
-	--opt.tempFeatDir = opt.dir_feats .. opt.flowfeats
 
 	return opt
 end
