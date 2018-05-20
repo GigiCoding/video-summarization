@@ -6,11 +6,11 @@ This code is written in Lua and requires Torch. For details of prerequisites ple
 ### Data
 General information about Charades dataset can be found [here](http://allenai.org/plato/charades/).
 
-To run this code, first downloadthe following items:
+First, download RGB features and annotation provided in Charades website:
 1. [two-stream RGB features @8fps](http://ai2-website.s3.amazonaws.com/data/Charades_v1_features_rgb.tar.gz)
 2. [annotation file and evaluation](http://ai2-website.s3.amazonaws.com/data/Charades.zip)
 
-Uncompress the files and save them under a directory $DATA, which later will be specified in the option '-dir_data'.
+Uncompress the files and save them under a directory $DATA, which later will be specified in the option '-dir_data'. The last package should contain two ```.csv``` files: ```Charades_v1_train.csv``` and ```Charades_v1_test.csv```. These are the annotation files the code needs to import from. 
 ```
 $ main_charades.lua -dir_data $DATA
 ```
