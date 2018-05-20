@@ -1,5 +1,5 @@
 # Extended LSTM for Video Summarization
-This code implements part of **Extended LSTM for video representation** and experiments on Charades datasets for action classification and video captioning.
+This code implements part of **Extended LSTM for video representation** and experiments on Charades dataset. The quality of summarization is evaluated by comparing the action classification rate using the video summary against the classification rate using the original videos. 
 ## Requirements
 This code is written in Lua and requires Torch. For details of prerequisites please refer to Karpathy's char-rnn.
 ## Usage
